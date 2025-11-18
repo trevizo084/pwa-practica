@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>☀️ App del Clima</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+
+<body>
+  <header>
+    <h1>☀️ App del Clima</h1>
+    <nav>
+      <button onclick="appShell.navigate('inicio')">Inicio</button>
+      <button onclick="appShell.navigate('pronostico')">Pronóstico</button>
+      <button onclick="appShell.navigate('info')">Información</button>
+      <!-- 🔔 Botón para notificaciones -->
+      <button id="notifyBtn">🔔 Mostrar notificación</button>
+    </nav>
+  </header>
+
+  <main id="content">
+    <h2>Bienvenido</h2>
+    <p>Consulta el clima actual y el pronóstico de tu ciudad.</p>
+  </main>
+
+  <footer>
+    <p>© 2025 App del Clima - Desarrollada por Denisse Trevizo</p>
+  </footer>
+
+  <!-- 🔧 Scripts -->
+  <script src="app.js"></script>
+
+  <script>
+    // Registrar el Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('✅ Service Worker registrado correctamente'))
+        .catch(err => console.error('❌ Error al registrar el SW:', err));
+    }
+
+    //  Lógica de notificaciones
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('notifyBtn');
+
+      if (!('Notification' in window)) {
+        alert('Tu navegador no soporta notificaciones.');
+        return;
+      }
+
+      btn.addEventListener('click', async () => {
+        const permiso = await Notification.requestPermission();
+
+        if (permiso === 'granted') {
+          new Notification('🌤️ Notificación de prueba', {
+            body: '¡BUENOOS DIAS HOY SE ENCUENTRA UN BUNE DIA SOLEADO  🎉',
+            icon: 'https://cdn-icons-png.flaticon.com/512/1116/1116453.png',
+            vibrate: [200, 100, 200],
+          });
+        } else if (permiso === 'denied') {
+          alert('Has bloqueado las notificaciones para este sitio.');
+        } else {
+          alert('Debes permitir las notificaciones para probar.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
