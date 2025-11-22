@@ -24,13 +24,13 @@ jobs:
         run: |
           python -m venv antenv
           source antenv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 🔍 EJECUTAR PRUEBAS UNITARIAS
+      # 🔍 EJECUTAR PRUEBAS UNITARIAS (SIN ACTIVATE)
       - name: Run unit tests
         run: |
-          source antenv/bin/activate
-          pytest
+          antenv/bin/pytest
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
