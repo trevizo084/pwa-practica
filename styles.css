@@ -1,59 +1,184 @@
+/* ============================
+   ⚫ ESTILOS GENERALES
+   ============================ */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: #f1f9ff;
-  color: #333;
+  background-color: #0e1117;
+  color: #e2e8f0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* ============================
+   🔹 HEADER
+   ============================ */
 header {
-  background-color: #0077b6;
-  color: white;
-  padding: 1em;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: #f9fafb;
+  padding: 1.3em;
   text-align: center;
+  border-bottom: 2px solid #374151;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* ============================
+   🔹 MENÚ DE NAVEGACIÓN
+   ============================ */
+nav {
+  margin-top: 10px;
 }
 
 nav button {
-  background-color: white;
-  color: #0077b6;
-  border: none;
-  margin: 0 5px;
+  background-color: #1f2937;
+  color: #e2e8f0;
+  border: 1px solid #374151;
+  margin: 0 6px;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.95rem;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
 nav button:hover {
-  background-color: #caf0f8;
+  background-color: #374151;
+  transform: translateY(-2px);
 }
 
+/* Botón de Notificaciones */
+#notifyBtn {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+  transition: 0.25s;
+}
+
+#notifyBtn:hover {
+  background-color: #3b82f6;
+  transform: scale(1.05);
+}
+
+/* ============================
+   🔹 CONTENIDO
+   ============================ */
 main {
   flex: 1;
   padding: 20px;
   text-align: center;
+  animation: fadeIn 0.5s ease;
 }
 
-footer {
-  background-color: #023e8a;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 0.9em;
+h2 {
+  color: #93c5fd;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
 }
-#notifyBtn {
-  background-color: #0096c7;
-  color: white;
-  border: none;
-  padding: 8px 14px;
+
+/* ============================
+   🔹 TARJETAS
+   ============================ */
+.card {
+  background-color: #1f2937;
+  padding: 18px;
+  margin: 15px auto;
+  border-radius: 14px;
+  max-width: 600px;
+  border: 1px solid #374151;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
+}
+
+.card h3 {
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+/* Lista dentro de secciones */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #111827;
+  margin: 8px auto;
+  padding: 10px;
+  max-width: 400px;
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
+  border: 1px solid #1f2937;
   transition: 0.2s;
 }
 
-#notifyBtn:hover {
-  background-color: #00b4d8;
-  transform: scale(1.05);
+ul li:hover {
+  background-color: #1f2937;
+  transform: scale(1.03);
+}
+
+/* ============================
+   🔹 FOOTER
+   ============================ */
+footer {
+  background-color: #111827;
+  color: #9ca3af;
+  padding: 12px;
+  font-size: 0.9em;
+  text-align: center;
+  border-top: 1px solid #1f2937;
+  margin-top: 10px;
+}
+
+/* ============================
+   🔹 SKELETON LOADER
+   ============================ */
+.skeleton-title {
+  width: 60%;
+  height: 20px;
+  background: #4b5563;
+  margin: 10px auto;
+  border-radius: 5px;
+  animation: pulse 1.3s infinite ease-in-out;
+}
+
+.skeleton-line {
+  width: 80%;
+  height: 14px;
+  background: #374151;
+  margin: 10px auto;
+  border-radius: 5px;
+  animation: pulse 1.3s infinite ease-in-out;
+}
+
+.skeleton-line.short {
+  width: 50%;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ============================
+   🔹 ANIMACIÓN GENERAL
+   ============================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
